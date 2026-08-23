@@ -63,4 +63,4 @@ academic training. No unauthorized systems were accessed.
 
 ## Evidence
 
-Full terminal screenshots for all tasks: [nmap-ctf-week3-evidence.pdf](./nmap-ctf-week3-evidence.pdf)
+Full walkthrough with screenshots: [nmap-network-reconnaissance-report.pdf](./nmap-network-reconnaissance-report.pdf)
