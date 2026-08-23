@@ -1,40 +1,60 @@
 # Meterpreter Payload Delivery Workflow
 
+> **Controlled Cybersecurity Lab Write-Up**
+>
+> A technical record of a Windows Meterpreter reverse-TCP payload delivery workflow performed in an isolated educational environment.
+
+![Security Assessment](https://img.shields.io/badge/Focus-Security%20Assessment-111827?style=for-the-badge)
+![Environment](https://img.shields.io/badge/Environment-Controlled%20Lab-0f766e?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%2B%20Linux-2563eb?style=for-the-badge)
+
+---
+
 ## Overview
 
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#overview)
+This write-up documents a controlled-lab workflow involving the preparation and delivery of a **Windows Meterpreter reverse-TCP payload**.
 
-A controlled-lab security exercise documenting the preparation and delivery workflow of a Windows Meterpreter reverse-TCP payload. The practical covers payload generation, Apache-based file hosting, victim-side retrieval, and preparation of a PDF-based delivery artifact.
+The practical covers four main stages:
 
-The source material confirms the workflow, but it does not provide evidence of a completed exploitation/session result or document the exact mechanism used to embed the payload into the PDF.
+```text
+Payload Generation
+        ↓
+Apache Web Hosting
+        ↓
+Victim-Side Retrieval
+        ↓
+PDF Artifact Preparation
+```
+
+The available source material confirms these workflow stages. It does **not** provide evidence of a completed exploitation or Meterpreter session, and it does not document the exact mechanism used to embed the payload into the PDF.
 
 ## Objective
 
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#objective)
+Document the laboratory procedure used to:
 
-Document the controlled-laboratory procedure used to generate a Windows payload, host it through Apache, retrieve it from the victim machine, and incorporate the payload into a PDF-based artifact while recording the available technical evidence.
+- Generate a Windows Meterpreter reverse-TCP payload.
+- Host the generated executable through Apache2.
+- Retrieve the payload from the victim machine.
+- Incorporate the payload into a PDF-based delivery artifact.
+- Preserve the available evidence without adding undocumented implementation details.
 
 ## Lab Environment
 
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#lab-environment)
-
-- **Assessment Type:** Controlled educational lab practical
-- **Referenced Payload Host:** `192.168.88.246`
-- **Payload Type:** Windows Meterpreter reverse TCP
-- **Payload File:** `payload.exe`
-- **Server Component:** Apache2
-- **Setting:** Educational / Controlled Lab Environment
-- **Training Context:** NAVTTC-funded cybersecurity training, Corvit Institute, Rawalpindi
+| Component | Details |
+|---|---|
+| **Assessment Type** | Controlled educational lab practical |
+| **Payload Host** | `192.168.88.246` |
+| **Payload Type** | Windows Meterpreter reverse TCP |
+| **Payload File** | `payload.exe` |
+| **Server Component** | Apache2 |
+| **Setting** | Educational / Controlled Lab Environment |
+| **Training Context** | NAVTTC-funded cybersecurity training, Corvit Institute, Rawalpindi |
 
 ## Tools Used
-
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#tools-used)
 
 `msfvenom` · `Meterpreter` · `Apache2` · `PDF artifact preparation`
 
 ## Methodology & Results
-
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#methodology--results)
 
 | **#** | **Stage** | **Command / Action** | **Result / Finding** |
 |---:|---|---|---|
@@ -42,29 +62,38 @@ Document the controlled-laboratory procedure used to generate a Windows payload,
 | 2 | Payload hosting | `mv payload.exe /var/www/html` | Generated payload moved to the Apache web root. |
 | 3 | Web server startup | `service apache2 start` | Apache2 service started for payload hosting. |
 | 4 | Service verification | `service apache2 status` | Apache2 status checked after startup. |
-| 5 | Victim-side delivery | Payload downloaded on the victim machine | Source material states that the generated malware was downloaded; exact URL, browser, timestamp, and download method are not documented. |
-| 6 | PDF artifact preparation | Payload incorporated into a PDF-based artifact | Source material states that the payload was injected into the PDF, but the exact embedding mechanism is not documented. |
+| 5 | Victim-side delivery | Payload downloaded on the victim machine | The source material confirms the download, but does not specify the exact URL, browser, timestamp, or download method. |
+| 6 | PDF artifact preparation | Payload incorporated into a PDF-based artifact | The source states that the payload was injected into the PDF, but the exact embedding mechanism is not documented. |
 | 7 | Final PDF creation | PDF images and icon added; final PDF created | A final PDF-based delivery artifact was produced according to the submitted material. |
 | 8 | Exploitation/session result | Not documented | No final exploitation or Meterpreter session result is evidenced in the source material. |
 
+## Workflow at a Glance
+
+| Stage | Purpose | Status |
+|---|---|---|
+| **01 · Generate** | Create the reverse-TCP executable | ✅ Documented |
+| **02 · Host** | Place `payload.exe` in Apache web root | ✅ Documented |
+| **03 · Serve** | Start and verify Apache2 | ✅ Documented |
+| **04 · Deliver** | Retrieve payload on victim machine | ✅ Documented |
+| **05 · Package** | Prepare the PDF-based artifact | ✅ Documented |
+| **06 · Session** | Confirm a successful Meterpreter session | ⚠️ Not documented |
+
 ## Key Findings
 
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#key-findings)
-
-- The practical demonstrates a complete **malware-delivery workflow** in a controlled environment, beginning with payload generation and continuing through web hosting, victim-side retrieval, and PDF artifact preparation.
+- The exercise demonstrates a **malware-delivery workflow** spanning payload generation, web hosting, victim-side retrieval, and PDF artifact preparation.
 - The payload was configured as a **Windows Meterpreter reverse-TCP** executable using `192.168.88.246` as the listener host and TCP port `2222`.
-- **Apache2** was used as the server component to host `payload.exe` from the web root.
-- The source material confirms victim-side retrieval and PDF-based delivery, but it does **not** document the exact download mechanism, PDF embedding technique, or a completed Meterpreter session.
+- **Apache2** served as the web-hosting component for `payload.exe`.
+- The source confirms that the generated payload was downloaded on the victim machine.
+- The source confirms PDF-based payload incorporation, but the **exact embedding technique is not documented**.
+- A completed exploitation or Meterpreter session is **not evidenced** in the submitted material.
 
 ## Security Impact
 
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#security-impact)
+In an unauthorized environment, a workflow of this type could facilitate malware delivery and potentially provide remote access to a compromised host.
 
-If performed against an unauthorized system, a workflow of this type could facilitate malware delivery and potentially provide remote access to a compromised host. In the submitted context, the activity is described as an educational practical and no unauthorized target is identified.
+Within the submitted context, the activity is described as an **educational practical in a controlled laboratory environment**, and no unauthorized production target is identified.
 
 ## Recommendations
-
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#recommendations)
 
 - Do not execute unknown or untrusted executable content.
 - Use endpoint protection and application controls to detect and block suspicious payloads.
@@ -75,20 +104,20 @@ If performed against an unauthorized system, a workflow of this type could facil
 
 ## What I Learned
 
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#what-i-learned)
+This practical demonstrated how multiple stages of a delivery workflow connect together: **payload generation → web hosting → victim-side retrieval → document preparation**.
 
-This practical demonstrated the relationship between payload generation, web-based file hosting, victim-side delivery, and malicious document preparation. It also reinforced the importance of documenting each stage with clear technical evidence when conducting security exercises.
-
-## Evidence
-
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#evidence)
-
-The submitted PDF contains the visual evidence associated with the workflow, including source pages covering payload generation, hosting, delivery, and PDF artifact preparation.
-
-Full report: [meterpreter-payload-delivery-workflow.pdf](meterpreter-payload-delivery-workflow.pdf)
+It also reinforced the importance of collecting clear technical evidence at every stage and separating documented observations from details that are not present in the source material.
 
 ## Environment Disclaimer
 
-[svg](https://github.com/adeel635/Penetration-Testing-Lab-Writeups/blob/main/meterpreter-payload-delivery-workflow.md#environment-disclaimer)
+All activity described in this write-up is framed as an **educational / controlled laboratory exercise**. The report is based solely on the submitted practical material. No claim of testing against an unauthorized production system is made.
 
-All activity described in this writeup is framed as an educational / controlled laboratory exercise. The report is based solely on the submitted practical material. No claim of testing against an unauthorized production system is made.
+## Evidence
+
+The submitted PDF contains the visual evidence associated with the workflow, including source pages covering payload generation, hosting, delivery, and PDF artifact preparation.
+
+**Full Report:** [meterpreter-payload-delivery-workflow.pdf](meterpreter-payload-delivery-workflow.pdf)
+
+---
+
+> **Repository Note:** This write-up is intended for authorized cybersecurity training, documentation, and controlled laboratory use only.
