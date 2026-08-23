@@ -52,3 +52,7 @@ no authentication prompt.
 
 - **HttpOnly Flag** — prevents JavaScript from accessing cookies
 - **Secure Flag** — cookies are only sent over HTTPS
+  
+## Evidence
+
+Full walkthrough with screenshots: [session-hijacking-cookie-injection.pdf](./session-hijacking-cookie-injection.pdf)
