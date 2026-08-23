@@ -69,4 +69,4 @@ accessed.
 
 ## Evidence
 
-Full walkthrough with screenshots: [dvwa-auth-bypass-report.pdf](https://github.com/user-attachments/files/31343100/dvwa-auth-bypass-report.pdf)
+Full walkthrough with screenshots: [dvwa-auth-bypass-report.pdf](./dvwa-auth-bypass-report.pdf)
