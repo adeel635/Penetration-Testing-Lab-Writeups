@@ -1,4 +1,4 @@
-# Cybersecurity Lab Write-Ups
+# Penetration Testing Lab Writeups
 
 Structured penetration testing and network security lab write-ups completed during cybersecurity training at Corvit Institute (NAVTTC-funded program) and self-directed practice. All work performed in isolated VirtualBox lab environments.
 
